@@ -6,7 +6,7 @@ import ShoutOut from "../models/ShoutOuts";
 const shoutRoutes = express.Router();
 
 // GET
-shoutRoutes.get("/shout-outs", async (req, res) => {
+shoutRoutes.get("/", async (req, res) => {
   try {
     const client = await getClient();
     const results = await client
@@ -22,7 +22,7 @@ shoutRoutes.get("/shout-outs", async (req, res) => {
 });
 
 // GET BY ID
-shoutRoutes.get("/shout-outs/:id", async (req, res) => {
+shoutRoutes.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const client = await getClient();
@@ -42,7 +42,7 @@ shoutRoutes.get("/shout-outs/:id", async (req, res) => {
 });
 
 // POST
-shoutRoutes.post("/cart-items", async (req, res) => {
+shoutRoutes.post("/", async (req, res) => {
   const item = req.body as ShoutOut;
   try {
     const client = await getClient();
@@ -55,7 +55,7 @@ shoutRoutes.post("/cart-items", async (req, res) => {
 });
 
 // PUT
-shoutRoutes.put("/shout-outs/:id", async (req, res) => {
+shoutRoutes.put("/:id", async (req, res) => {
   const id = req.params.id;
   const data = req.body as ShoutOut;
   delete data._id;
@@ -78,7 +78,7 @@ shoutRoutes.put("/shout-outs/:id", async (req, res) => {
 });
 
 // DELETE
-shoutRoutes.delete("/shout-outs/:id", async (req, res) => {
+shoutRoutes.delete("/:id", async (req, res) => {
   const id = req.params.id;
   try {
     const client = await getClient();
